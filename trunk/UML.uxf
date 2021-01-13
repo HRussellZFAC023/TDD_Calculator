@@ -1,0 +1,245 @@
+<diagram program="umletino" version="14.3.0"><zoom_level>10</zoom_level><element><id>UMLClass</id><coordinates><x>1431</x><y>400</y><w>260</w><h>180</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; 
+bg=#f1c40f
+_CalcFactory_
+Creates calculator objects
+--
+*Attributes*
+validators HashMap&lt;OpType,Caculator&gt;
+--
+*Responsibilities*
++newInstance(OpType op)
+     {exception=InvalidExpression}</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>641</x><y>770</y><w>240</w><h>240</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt; 
+bg=#d35400
+_Symbol_
+A list of the non-number tokens 
+possible in an expressision.
+Used in several places 
+(eg instead of if (input=="+"))
+ to keep track of symbols to easilly
+for updaing in the future
+--
+_LEFT BRACKET_
+_RIGHT BRACKET_
+_TIMES_
+_DIVIDE_
+_PLUS_
+_MINUS_
+_INVALID_
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1081</x><y>110</y><w>320</w><h>190</h></coordinates><panel_attributes>&lt;&lt;model&gt;&gt;
+bg=#e74c3c
+_CalcModel_
+Also shows the values of each of
+the Calculator's memories.
+--
+*Attributes*
+-calc: Calculator
+-answer: float
+--
+*Responsibilities*
++evaluate(expression str[]): float
++getStringType(String[] OpType)
++parseString(String)
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1121</x><y>640</y><w>260</w><h>170</h></coordinates><panel_attributes>bg=#f1c40f
+_PostfixCalc_
+Evaluates Reverse Polish
+String Expressions
+--
+*Attributes*
+-numStack: Stack 
+--
+*Responsibilities*
++evaluate(String[] expression): float
+     {exception=BadExpression}</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1241</x><y>570</y><w>350</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;330;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1541</x><y>310</y><w>100</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;90;80;10</additional_attributes></element><element><id>Relation</id><coordinates><x>391</x><y>230</y><w>710</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>690;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>181</x><y>140</y><w>100</w><h>80</h></coordinates><panel_attributes>lt=&lt;.
+m2=&lt;&lt;Create&gt;&gt;</panel_attributes><additional_attributes>80;60;50;30;70;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>71</x><y>900</y><w>150</w><h>120</h></coordinates><panel_attributes>&lt;&lt;view&gt;&gt;
+TextView
+A menu based View
+--
+-result: String
+-userInput: String
+-error: Exception
+bg=#2ecc71</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>171</x><y>810</y><w>100</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>80;10;10;90</additional_attributes></element><element><id>Relation</id><coordinates><x>241</x><y>810</y><w>90</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;70;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>631</x><y>140</y><w>290</w><h>130</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; 
+bg=#9b59b6
+_Operator_
+Generic operators class to remove "if". Extensible.
+--
+*Responsibilities*
++compute(float, float): float
++checkTop(String top): boolean
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>61</x><y>620</y><w>390</w><h>470</h></coordinates><panel_attributes>View
+--
+bg=#e67e22
+layer=-1</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>231</x><y>890</y><w>210</w><h>160</h></coordinates><panel_attributes>&lt;&lt;view&gt;&gt;
+_CalcView_
+A graphical window with
+1. a text field for an expression
+2. a "calculate" button
+--
+Attributes
+-result: String
+-userInput: String
+-error: Exception
+bg=#2ecc71
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>361</x><y>840</y><w>140</w><h>170</h></coordinates><panel_attributes>lt=&lt;-
+&lt;&lt;Singleton&gt;&gt;</panel_attributes><additional_attributes>10;50;10;20;120;20;120;150;80;150</additional_attributes></element><element><id>Relation</id><coordinates><x>1231</x><y>290</y><w>340</w><h>130</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>320;110;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1551</x><y>570</y><w>60</w><h>100</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;80;40;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1241</x><y>570</y><w>370</w><h>90</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;70;350;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1371</x><y>720</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;-</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1111</x><y>400</y><w>290</w><h>180</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; 
+bg=#f1c40f
+_Calculator_
+Allows calculation of 
+String Expressions
+--
+*Attributes*
+operators: HashMap&lt;String,Operator&gt;
+--
+*Responsibilities*
++evaluate(String[] expression): float
+     {exception=InvalidExpression}</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1431</x><y>650</y><w>260</w><h>170</h></coordinates><panel_attributes>bg=#f1c40f
+_InfixCalc_
+Evaluates infix String Expressions
+--
+*Attributes*
+-symbolStack: Stack 
+-calc: PostfixCalc
+--
+*Responsibilities*
++evaluate(String[] expression): float
+     {exception=BadExpression}</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1241</x><y>570</y><w>30</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;70</additional_attributes></element><element><id>UMLClass</id><coordinates><x>501</x><y>390</y><w>220</w><h>110</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; 
+bg=#9b59b6
+_Add_
+A class to add two numbers
+--
+*Responsibilities*
++compute(float, float): float
++checkTop(String top): 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>801</x><y>340</y><w>220</w><h>120</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; 
+bg=#9b59b6
+_Sub_
+A class to subtract two numbers
+--
+*Responsibilities*
++compute(float, float): float
++checkTop(String top): 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>821</x><y>590</y><w>220</w><h>110</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; 
+bg=#9b59b6
+_Div_
+A class to divide two numbers
+--
+*Responsibilities*
++compute(float, float): float
++checkTop(String top): 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>1521</x><y>190</y><w>170</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt; 
+bg=#d35400
+_OpType_
+Represents if a String
+ is in inxfix or postfix
+--
+_INFIX_
+_POSTFIX_
+_INVALID_
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>601</x><y>680</y><w>200</w><h>110</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;180;90</additional_attributes></element><element><id>Relation</id><coordinates><x>621</x><y>260</y><w>150</w><h>150</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>130;10;10;130</additional_attributes></element><element><id>Relation</id><coordinates><x>771</x><y>260</y><w>140</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;120;80</additional_attributes></element><element><id>Relation</id><coordinates><x>711</x><y>470</y><w>420</w><h>40</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;visit&gt;&gt;</panel_attributes><additional_attributes>10;20;400;20</additional_attributes></element><element><id>Relation</id><coordinates><x>1011</x><y>370</y><w>120</w><h>140</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;visit&gt;&gt;</panel_attributes><additional_attributes>10;10;100;120</additional_attributes></element><element><id>Relation</id><coordinates><x>1011</x><y>480</y><w>120</w><h>130</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;visit&gt;&gt;</panel_attributes><additional_attributes>10;110;100;10</additional_attributes></element><element><id>Relation</id><coordinates><x>911</x><y>180</y><w>220</w><h>250</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>200;230;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>771</x><y>690</y><w>150</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>130;10;10;80</additional_attributes></element><element><id>UMLClass</id><coordinates><x>641</x><y>1020</y><w>230</w><h>130</h></coordinates><panel_attributes>&lt;&lt;enumeration&gt;&gt;
+_Type_
+A list of the types of
+value an Entry can represent
+--
+_NUMBER_
+_SYMBOL_
+_INVALID_
+bg=#d35400</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>981</x><y>850</y><w>280</w><h>270</h></coordinates><panel_attributes>_Entry_
+Values stored in a Stack
+--
+Attributes
+-number: float
+-other: Symbol
+-type: Type
+--
+Responsibilities
+&lt;&lt;constructor&gt;&gt; +Entry(float value)
+&lt;&lt;constructor&gt;&gt; +Entry(Symbol which)
++getType(): Type
++getString(): String
+  {Exception=BadType}
++getSymbol(): Symbol
+  {Exception=BadType}
++getValue(): float
+  {Exception=BadType}
+bg=#d35400</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>871</x><y>870</y><w>130</w><h>80</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>110;60;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>861</x><y>990</y><w>140</w><h>120</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>120;10;10;100</additional_attributes></element><element><id>UMLClass</id><coordinates><x>1361</x><y>880</y><w>270</w><h>270</h></coordinates><panel_attributes>_Stack_
+This class represents a
+Stack of Entry values
+--
+Attributes
+-size: integer
+-entries: List&lt;Entry&gt;
+--
+Responsibilities
++push(i: Entry)
+  Add a new Entry to the Stack
++pop(): Entry {exception=EmptyStack}
+  Returns (and removes) newest Entry
++top(): Entry {exception=EmptyStack}
+  Returns (but keeps) newset Entry
++size(): integer
+  How many Entry's in the Stack
+bg=#9b59b6</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLPackage</id><coordinates><x>481</x><y>90</y><w>580</w><h>650</h></coordinates><panel_attributes>Operators
+--
+bg=#e67e22
+layer=-1
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>711</x><y>480</y><w>420</w><h>140</h></coordinates><panel_attributes>lt=&lt;.
+&lt;&lt;visit&gt;&gt;</panel_attributes><additional_attributes>10;120;400;10</additional_attributes></element><element><id>Relation</id><coordinates><x>691</x><y>260</y><w>90</w><h>330</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>70;10;70;280;10;310</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>51</x><y>0</y><w>1680</w><h>1200</h></coordinates><panel_attributes>CS2800:application
+--
+bg=#e67e22
+layer=-10000
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>111</x><y>200</y><w>290</w><h>240</h></coordinates><panel_attributes>&lt;&lt;controller&gt;&gt;
+_CalcController_
+Create view and model.
+Adds itself as an observer to the view
+so that (asynchronous) changes
+can be observed
+--
+Attributes
+-model: CalcModel
+-view: View
+-isInfix: boolean
+--
+Responsibilities
++handleCalculate()
+Is notified when a
+calculation is required
+bg=#2980b9</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>771</x><y>450</y><w>80</w><h>340</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>60;10;10;320</additional_attributes></element><element><id>Relation</id><coordinates><x>711</x><y>480</y><w>90</w><h>310</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;70;290</additional_attributes></element><element><id>Relation</id><coordinates><x>771</x><y>260</y><w>110</w><h>350</h></coordinates><panel_attributes>lt=&lt;&lt;.</panel_attributes><additional_attributes>10;10;10;280;90;330</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>461</x><y>40</y><w>1250</w><h>1140</h></coordinates><panel_attributes>Model
+--
+bg=#e67e22
+layer=-12
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>161</x><y>80</y><w>180</w><h>70</h></coordinates><panel_attributes>&lt;&lt;controller&gt;&gt;
+_CalcDriver_
+Main entry
+Creates controller
+
+bg=#2980b9</panel_attributes><additional_attributes></additional_attributes></element><element><id>UMLClass</id><coordinates><x>131</x><y>690</y><w>220</w><h>130</h></coordinates><panel_attributes>&lt;&lt;Interface&gt;&gt;
+View
+--
+Responsibilities
++addCalcObserver(Observer f): void
++getUserInput(): String
++setResult(str: String): void
++setError(Exception e):void
+bg=#2ecc71</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>781</x><y>730</y><w>360</w><h>30</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>340;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>771</x><y>760</y><w>680</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>660;20;10;10</additional_attributes></element><element><id>UMLPackage</id><coordinates><x>71</x><y>30</y><w>370</w><h>470</h></coordinates><panel_attributes>Controller
+--
+bg=#e67e22
+layer=-1
+
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>1249</x><y>1000</y><w>130</w><h>40</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=0..*</panel_attributes><additional_attributes>110;10;10;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1239</x><y>290</y><w>50</w><h>130</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
+m2=1:1</panel_attributes><additional_attributes>10;10;20;110</additional_attributes></element><element><id>Relation</id><coordinates><x>1349</x><y>800</y><w>130</w><h>100</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>10;10;110;80</additional_attributes></element><element><id>Relation</id><coordinates><x>1459</x><y>810</y><w>90</w><h>90</h></coordinates><panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes><additional_attributes>70;10;10;70</additional_attributes></element><element><id>Relation</id><coordinates><x>1181</x><y>800</y><w>70</w><h>70</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;50;50;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1251</x><y>810</y><w>200</w><h>110</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;90;180;10</additional_attributes></element><element><id>Relation</id><coordinates><x>1371</x><y>470</y><w>80</w><h>30</h></coordinates><panel_attributes>lt=&lt;.</panel_attributes><additional_attributes>10;10;60;10</additional_attributes></element><element><id>UMLClass</id><coordinates><x>501</x><y>570</y><w>220</w><h>120</h></coordinates><panel_attributes>&lt;&lt;interface&gt;&gt; 
+bg=#9b59b6
+_Mult_
+A class to time two numbers
+--
+*Responsibilities*
++compute(float, float): float
++checkTop(String top): 
+</panel_attributes><additional_attributes></additional_attributes></element><element><id>Relation</id><coordinates><x>231</x><y>430</y><w>90</w><h>280</h></coordinates><panel_attributes>lt=&lt;.
+m2=&lt;&lt;Observer&gt;&gt;</panel_attributes><additional_attributes>30;260;10;10</additional_attributes></element></diagram>
